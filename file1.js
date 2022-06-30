@@ -655,9 +655,15 @@ console.log (firstNam,userId,gender,);
  
 // creat a function
 
-function birthday()
+// function birthday()  // function declaration
+// {
+//     console.log("goo to sleeep");
+// }
+// we can also creat function by this way
+
+const birthday=function() //When we assign a function with a variable then it is called function expression
 {
-    console.log("goo to sleeep");
+    console.log("goo to sleep");
 }
 
 //call that function
@@ -697,7 +703,9 @@ function fChar(string)
 console.log(fChar("JAPAn"));
 
  
-
+// function
+// input: array, target(number)
+// output :index of target if target is prresent in array
 
 function findIndex(array,target)
  {
@@ -708,10 +716,221 @@ function findIndex(array,target)
               return i;
           }
      }
-     return -1;
+     return null;
  }
 
  const arr=[1,3,5,8,6];
- const ans=findIndex(arr,5);
+ const ans=findIndex(arr,7);
  console.log(ans);
 
+
+
+ // arrow functions
+
+
+ const happy=() =>
+{
+    console.log("goo to sleep");
+} 
+happy();
+
+const isEven = numb => 
+numb%2===0; //here we don't have to use ()with perameter when only one perameter is set in the function
+
+console.log(isEven())
+
+             
+
+
+
+
+                // hoisting
+
+//  It is used only in function declaration. Can't use in function expression or arrow function
+
+host(); // In hoisting method, Function is called earlier before creating a function.But calling function must be same with created function
+
+function host()
+{
+    console.log("HEllo");
+}
+
+
+
+
+
+const hello = (array,target) =>
+{
+    for(let i=0;i<=array.length;i++)
+    {
+        if(array[i]===target)
+        {
+            return i;
+        }
+    }
+    return "Couldn't find";
+}
+const ar=[1,2,6,5,7,9];
+// const as=hello(ar,5);
+console.log(hello(ar,4));
+
+            // function into the function
+
+
+
+const func=()=>
+{      
+    const fin=(num1,num2)=>
+    {
+         return num1+num2;
+    }
+    console.log(fin(5,6));
+
+    console.log("hello");
+}
+func();
+
+// block scope and function scope
+
+// let and const are block scope
+
+// var is function scope
+ 
+// using {} is made a block. we have to do coding in the block
+// in block method we can use same type of variable outside the block
+{
+    let firstName= "Shanto"; //this is in only {} block
+    console.log(firstName);
+}
+
+const lasr = "Islam"; //This is in full body block
+console.log(lasr);
+
+// but using var in function scope , we can use it outside the block
+
+{
+    var firstName="shakkk";
+}
+console.log(firstName);
+
+           // default perameter
+
+// function myApp(a,b)
+// {
+//     if(typeof b ==="undefined") //here if b is undefined/value is not given then b will pick the value 0. but this method is old
+//     {
+//         b=0;
+//     }
+//     return a+b;
+// }
+
+
+
+//  new method
+
+function myApp(a,b=0) // here b will take value 0 by default if there no value is added. Thanks to the new default perameter
+{
+    return a+b;
+}
+const answer= myApp(4);
+console.log(answer);
+
+// rest perameter
+
+
+// function app(a,b,...c) // this ... is called rest perameter
+// {
+//     console.log(`a is ${a}`);
+//     console.log(`b is ${b}`);
+//     // console.log(`c is ${c}`);
+//     // we can make this c array. very simply just adding comma before c
+//     console.log("c is",c) // This is array
+// }
+
+// app(3,5,6,8,9,8,9);
+
+
+// Adding all the numbers as much as I can
+function C (...a)
+{
+    let tl = 0;
+    for ( let A of a)
+    {
+        tl=tl+A;
+    }
+    return tl;
+}
+
+const B = C(2,3,5,4,8,9,6,8);
+console.log(B);
+
+
+           // perameter destructuring
+
+// object
+// react
+
+const prson =
+{
+    firstname:"sha",
+    gender : "male"
+}
+
+// function printDetails(obj)
+// {
+//     console.log(obj.firstname);
+//     console.log(obj.gender);
+// }
+function printDetails({firstname,gender})
+{
+    console.log(firstname);
+    console.log(gender);
+}
+
+printDetails(prson);
+
+// call back function
+
+function myFunc(name)
+{
+     console.log("Hi there");
+     console.log(`My name is ${name}`);
+}
+
+function myFunc2(a)
+{
+    console.log("hello there");
+     a("Shanto");
+} 
+myFunc2(myFunc); //Here we are calling the function in the function perameter without peranthassis.
+
+
+
+        // Function returning function
+
+
+function myFunc3()
+{
+    function hello()
+    {
+        console.log("hello World");
+    }
+    return hello;
+}
+
+const answ =myFunc3();
+answ(); // this answ variable stores a function and became a function
+
+
+function func4 ()
+{
+    function natore(num1,num2)
+    {
+        return num1+num2;
+    }
+    return natore;
+}
+
+const alaipur = func4();
+
+console.log(alaipur(2,3));
